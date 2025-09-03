@@ -131,6 +131,33 @@ curl -X POST "http://localhost:8000/seqkit/stats" \
     "output_format": "json"
   }'
 ```
+#### FASTQ Statistics from a File (base64)
+
+To compute statistics for a FASTQ file, encode the file in base64 and send it in the request. Note: The base64 command usage differs between macOS and Linux.
+
+**macOS:**
+```bash
+curl -X POST "http://localhost:8000/seqkit/stats" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content": "'"$(base64 < /path/to/your.fastq | tr -d '\n')"'",
+    "input_format": "base64",
+    "output_format": "json"
+  }'
+```
+
+**Linux:**
+```bash
+curl -X POST "http://localhost:8000/seqkit/stats" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "content": "'"$(base64 -w 0 /path/to/your.fastq)"'",
+    "input_format": "base64",
+    "output_format": "json"
+  }'
+```
+
+Replace `/path/to/your.fastq` with your FASTQ file path. This ensures the file content is safely transmitted and processed by the MCP server.
 
 #### Custom seqkit Commands
 ```bash
