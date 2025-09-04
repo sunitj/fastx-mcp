@@ -31,7 +31,6 @@ async def lifespan(app: FastAPI):
     logger.info("Shutting down FastX-MCP Server...")
 
 
-# mcp_config = load_mcp_config()
 app = FastAPI(
     title="FastX-MCP Server",
     description="MCP Server for FASTA/FASTQ manipulation and file conversion",
