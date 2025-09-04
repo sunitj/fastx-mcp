@@ -1,0 +1,17 @@
+# MCP Server Configuration for fastx-mcp
+mcp_protocol_version: "2025-06-18"
+api_base_url: "http://localhost:8000"
+openapi_schema: "openapi.yaml"
+features:
+  - seqkit_stats
+  - convert
+  - manipulate
+# Add more MCP-specific settings as needed
+
+# Example: Add authentication, logging, or other MCP-specific options below
+# authentication:
+#   type: "apiKey"
+#   header_name: "X-API-Key"
+# logging:
+#   level: "INFO"
+#   file: "logs/mcp_server.log"

@@ -1,4 +1,20 @@
 # FastX-MCP Server
+#
+## MCP Protocol Support
+
+This server supports MCP protocol configuration via `mcp_config.yaml` and exposes its OpenAPI schema at `/openapi.yaml`.
+
+### MCP Configuration
+- See `mcp_config.yaml` for protocol version, enabled features, and options for authentication/logging.
+- You can extend this file for custom deployment needs.
+
+### OpenAPI Schema
+- The full OpenAPI specification is available at: `GET /openapi.yaml`
+- Use this for MCP client integration, validation, or documentation.
+
+### Environment Variables
+- Configure secrets and environment variables using a `.env` file (local) or Docker secrets (production).
+- Document all required variables in this README for clarity.
 
 A Python-based MCP server for FASTA/FASTQ manipulation and file conversion, containerized with Docker. This server provides in-memory tools for bioinformatics file format conversion and sequence operations using Biopython and seqkit.
 
@@ -277,7 +293,7 @@ fastx-mcp/
 
 ## Security Considerations
 
-- **No Authentication**: This is a basic MVP without authentication. Implement proper auth for production use.
+- **Authentication**: The server can be extended to support API key or other authentication via `mcp_config.yaml`.
 - **Input Validation**: All inputs are validated, but additional sanitization may be needed for production.
 - **Network Security**: Run behind a proxy/firewall in production environments.
 
