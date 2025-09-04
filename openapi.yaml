@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: fastx-mcp API
+  version: 1.0.0
+  description: API for FASTA/FASTQ/GenBank manipulation and statistics, MCP-compatible.
+servers:
+  - url: http://localhost:8000
+paths:
+  /seqkit/stats:
+    post:
+      summary: Get statistics for sequence data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: Base64-encoded sequence file content
+                input_format:
+                  type: string
+                  enum: [base64]
+                output_format:
+                  type: string
+                  enum: [json]
+      responses:
+        '200':
+          description: Statistics result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stats:
+                    type: object
+                    description: Sequence statistics
+        '400':
+          description: Invalid input
