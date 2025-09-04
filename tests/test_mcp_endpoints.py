@@ -1,5 +1,5 @@
 """
-Tests for MCP endpoints
+Tests for MCP endpoints.
 """
 import pytest
 from fastapi.testclient import TestClient
