@@ -1,5 +1,4 @@
 # FastX-MCP Server
-#
 ## MCP Protocol Support
 
 This server supports MCP protocol configuration via `mcp_config.yaml` and exposes its OpenAPI schema at `/openapi.yaml`.
