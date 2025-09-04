@@ -11,9 +11,8 @@ from src.api.seqkit import router as seqkit_router
 from src.api.logs import router as logs_router
 from src.mcp.endpoints import router as mcp_router
 from src.utils.logging import logger, audit_logger
-import yaml
-import os
 from src.core.seqkit_wrapper import validate_seqkit_installation
+from src.core.config import load_mcp_config
 
 
 @asynccontextmanager
@@ -39,13 +38,6 @@ app = FastAPI(
     redoc_url="/redoc",
     lifespan=lifespan,
 )
-
-
-# Load MCP config
-def load_mcp_config():
-    config_path = os.path.join(os.path.dirname(__file__), "../mcp_config.yaml")
-    with open(config_path, "r") as f:
-        return yaml.safe_load(f)
 
 
 mcp_config = load_mcp_config()

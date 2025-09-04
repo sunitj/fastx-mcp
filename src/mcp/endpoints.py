@@ -42,11 +42,8 @@ async def get_mcp_manifest() -> Dict[str, Any]:
     """
     try:
         # Load config here to avoid circular imports
-        import yaml
-        import os
-        config_path = os.path.join(os.path.dirname(__file__), "../../mcp_config.yaml")
-        with open(config_path, "r") as f:
-            mcp_config = yaml.safe_load(f)
+        from src.core.config import load_mcp_config
+        mcp_config = load_mcp_config()
         
         tools_summary = get_tools_summary()
         
