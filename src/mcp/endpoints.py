@@ -12,6 +12,9 @@ from src.core.seqkit_wrapper import validate_seqkit_installation
 
 router = APIRouter()
 
+# Track server startup time for uptime calculation
+SERVER_START_TIME = time.time()
+
 
 @router.get("/tools")
 async def get_mcp_tools() -> Dict[str, Any]:
@@ -80,7 +83,7 @@ async def get_mcp_status() -> Dict[str, Any]:
         return {
             "status": "healthy",
             "timestamp": datetime.utcnow().isoformat() + "Z",
-            "uptime_seconds": time.time(),  # Simplified uptime
+            "uptime_seconds": time.time() - SERVER_START_TIME,
             "services": {
                 "biopython": True,
                 "seqkit": seqkit_available,
